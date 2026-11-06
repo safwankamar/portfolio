@@ -18,31 +18,34 @@ const alsoUses = [
   "Microservices",
 ];
 
+import Reveal from "./Reveal";
+
 const Skills = () => {
   return (
     <section id="toolkit" className="mx-auto max-w-[76rem] px-6 py-20 sm:px-10 sm:py-28">
-      <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">What I work with</h2>
+      <Reveal>
+        <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">What I work with</h2>
+      </Reveal>
 
       <dl className="scope-2 mt-12 sm:mt-16">
         {toolkit.map((item) => (
-          <div
-            key={item.name}
-            className="rule-top grid gap-1 py-5 sm:grid-cols-[minmax(0,14rem)_1fr] sm:gap-10 sm:py-6"
-          >
+          <Reveal key={item.name} rule>
+            <div className="grid gap-1 py-5 sm:grid-cols-[minmax(0,14rem)_1fr] sm:gap-10 sm:py-6">
             <dt className="text-[1.05rem] sm:text-[1.15rem]" style={{ fontWeight: 600 }}>
               {item.name}
             </dt>
             <dd className="measure text-[0.98rem] leading-[1.6] sm:text-[1.05rem]" style={{ color: "var(--ink-muted)" }}>
               {item.use}
-            </dd>
-          </div>
+              </dd>
+            </div>
+          </Reveal>
         ))}
       </dl>
 
-      <p className="scope-2 measure mt-10 text-[0.95rem] leading-[1.7]" style={{ color: "var(--ink-faint)" }}>
+      <Reveal className="scope-2"><p className="measure mt-10 text-[0.95rem] leading-[1.7]" style={{ color: "var(--ink-faint)" }}>
         Day to day I also reach for {alsoUses.slice(0, -1).join(", ")}, and{" "}
         {alsoUses[alsoUses.length - 1]}.
-      </p>
+      </p></Reveal>
     </section>
   );
 };

@@ -11,7 +11,12 @@
     --ink-muted: #596065;
     --ink-faint: #8b9298;
     --rule: #d3d8da;
-    --signal: #c7312f;
+    /* Bitcoin orange: the bright value for marks, the deep one where text
+       needs to stay legible on paper */
+    --signal: #f7931a;
+    --signal-ink: #8a5200;
+    --terminal-bg: #16191c;
+    --terminal-rule: #2b3034;
 
     /* shadcn compatibility (kept so stray primitives inherit the palette) */
     --background: 197 7% 93%;
@@ -26,8 +31,8 @@
     --secondary-foreground: 206 15% 9%;
     --muted: 197 7% 88%;
     --muted-foreground: 200 6% 37%;
-    --accent: 1 61% 48%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 33 93% 54%;
+    --accent-foreground: 206 15% 9%;
     --destructive: 1 61% 48%;
     --destructive-foreground: 0 0% 100%;
     --border: 197 8% 84%;
@@ -59,7 +64,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--signal);
+    outline: 2px solid var(--signal-ink);
     outline-offset: 3px;
   }
 }
@@ -90,7 +95,7 @@
   }
   .link:hover {
     text-decoration-color: var(--signal);
-    color: var(--signal);
+    color: var(--signal-ink);
   }
 
   .rule-top { border-top: 1px solid var(--rule); }
@@ -115,4 +120,132 @@
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+
+/* Scroll-entry: the hairline draws across, then the content settles */
+.reveal,
+.row > * {
+  opacity: 0;
+  transform: translateY(0.55rem);
+  transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-in,
+.row.is-in > * {
+  opacity: 1;
+  transform: none;
+}
+
+.row {
+  position: relative;
+}
+
+.row::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--rule);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.row.is-in::before {
+  transform: scaleX(1);
+}
+
+/* Terminal */
+.terminal {
+  background: var(--terminal-bg);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(20, 24, 27, 0.14), 0 18px 40px -22px rgba(20, 24, 27, 0.5);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--terminal-rule);
+}
+
+.terminal-dot {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+  background: #353b40;
+}
+
+.terminal-dot:first-child {
+  background: var(--signal);
+}
+
+.terminal-title {
+  margin-left: 0.5rem;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.72rem;
+  color: #6c757c;
+}
+
+.terminal-body {
+  margin: 0;
+  padding: 1.1rem 1.1rem 1.35rem;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: #c9d1d6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 17.5rem;
+}
+
+.t-prompt {
+  color: var(--signal);
+}
+
+.t-output {
+  color: #7fb3a3;
+}
+
+.t-note {
+  color: #6c757c;
+}
+
+.t-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.05em;
+  margin-left: 0.1em;
+  translate: 0 0.16em;
+  background: var(--signal);
+  animation: blink 1.05s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .row > * {
+    opacity: 1;
+    transform: none;
+  }
+  .row::before { transform: scaleX(1); }
+  .t-cursor { animation: none; }
+}
+
+.status-dot {
+  display: inline-block;
+  width: 0.42em;
+  height: 0.42em;
+  margin-right: 0.38em;
+  translate: 0 -0.22em;
+  border-radius: 50%;
+  background: var(--signal);
 }

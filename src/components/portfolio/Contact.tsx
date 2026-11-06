@@ -5,12 +5,17 @@ const channels = [
   { label: "GitHub", value: "safwankamar", href: "https://github.com/safwankamar" },
 ];
 
+import Reveal from "./Reveal";
+
 const Contact = () => {
   return (
     <section id="contact" className="mx-auto max-w-[76rem] px-6 py-20 sm:px-10 sm:py-28">
-      <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">
-        Open to new work
-      </h2>
+      <Reveal>
+        <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">
+          <span className="status-dot" aria-hidden="true" />
+          Open to new work
+        </h2>
+      </Reveal>
 
       <div className="scope-2 mt-12 sm:mt-16">
         <p className="measure text-[1.05rem] leading-[1.75] sm:text-[1.15rem]" style={{ color: "var(--ink-muted)" }}>
@@ -21,10 +26,8 @@ const Contact = () => {
 
         <dl className="mt-12 sm:mt-14">
           {channels.map((channel) => (
-            <div
-              key={channel.label}
-              className="rule-top grid gap-1 py-5 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-10"
-            >
+            <Reveal key={channel.label} rule>
+              <div className="grid gap-1 py-5 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-10">
               <dt className="text-[0.88rem]" style={{ color: "var(--ink-faint)" }}>
                 {channel.label}
               </dt>
@@ -38,8 +41,9 @@ const Contact = () => {
                 >
                   {channel.value}
                 </a>
-              </dd>
-            </div>
+                </dd>
+              </div>
+            </Reveal>
           ))}
         </dl>
       </div>

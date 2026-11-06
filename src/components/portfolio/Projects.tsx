@@ -37,14 +37,19 @@ const projects = [
   },
 ];
 
+import Reveal from "./Reveal";
+
 const Projects = () => {
   return (
     <section id="work" className="mx-auto max-w-[76rem] px-6 py-20 sm:px-10 sm:py-28">
-      <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">Selected work</h2>
+      <Reveal>
+        <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">Selected work</h2>
+      </Reveal>
 
       <div className="scope-2 mt-12 sm:mt-16">
         {projects.map((project) => (
-          <article key={project.title} className="rule-top py-8 sm:py-10">
+          <Reveal key={project.title} rule>
+            <article className="py-8 sm:py-10">
             <h3 className="text-[1.3rem] sm:text-[1.6rem]" style={{ fontWeight: 600, letterSpacing: "-0.02em" }}>
               {project.title}
             </h3>
@@ -55,8 +60,9 @@ const Projects = () => {
               {project.stack.map((tech) => (
                 <li key={tech}>{tech}</li>
               ))}
-            </ul>
-          </article>
+              </ul>
+            </article>
+          </Reveal>
         ))}
       </div>
     </section>
