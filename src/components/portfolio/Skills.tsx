@@ -19,6 +19,7 @@ const alsoUses = [
 ];
 
 import Reveal from "./Reveal";
+import SkillGlobe from "./SkillGlobe";
 
 const Skills = () => {
   return (
@@ -27,7 +28,11 @@ const Skills = () => {
         <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">What I work with</h2>
       </Reveal>
 
-      <dl className="scope-2 mt-12 sm:mt-16">
+      <Reveal className="mt-10 sm:mt-14" delay={60}>
+        <SkillGlobe />
+      </Reveal>
+
+      <dl className="scope-2 mt-10 sm:mt-14">
         {toolkit.map((item) => (
           <Reveal key={item.name} rule>
             <div className="grid gap-1 py-5 sm:grid-cols-[minmax(0,14rem)_1fr] sm:gap-10 sm:py-6">

@@ -249,3 +249,68 @@
   border-radius: 50%;
   background: var(--signal);
 }
+
+/* Skill globe */
+.globe-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.globe {
+  position: relative;
+  width: min(100%, 32rem);
+  aspect-ratio: 1;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.globe-wire {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 0.5;
+  opacity: 0.6;
+}
+
+.globe-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.globe-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: var(--ink-muted);
+}
+
+.globe-hint {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.globe-hint::before {
+  content: "";
+  display: inline-block;
+  width: 0.38em;
+  height: 0.38em;
+  margin-right: 0.45em;
+  translate: 0 -0.15em;
+  border-radius: 50%;
+  background: var(--signal);
+}
