@@ -3,22 +3,59 @@
 @tailwind utilities;
 
 @layer base {
+  /* Night is the default; .light is the alternate the toggle switches to. */
   :root {
-    /* Design tokens — cool paper, ink, one signal accent */
+    --paper: #121518;
+    --paper-raised: #1b1f23;
+    --ink: #e7eaec;
+    --ink-muted: #9aa3a9;
+    --ink-faint: #6b757b;
+    --rule: #2a3035;
+    --signal: #f7931a;
+    --signal-ink: #f7931a;
+    --terminal-bg: #1b1f23;
+    --terminal-rule: #313840;
+    --terminal-text: #c9d1d6;
+    --terminal-dim: #6c757c;
+    --terminal-output: #8fc4b2;
+
+    --background: 203 14% 8%;
+    --foreground: 200 10% 91%;
+    --card: 203 12% 12%;
+    --card-foreground: 200 10% 91%;
+    --popover: 203 12% 12%;
+    --popover-foreground: 200 10% 91%;
+    --primary: 200 10% 91%;
+    --primary-foreground: 203 14% 8%;
+    --secondary: 203 11% 16%;
+    --secondary-foreground: 200 10% 91%;
+    --muted: 203 11% 16%;
+    --muted-foreground: 203 7% 64%;
+    --accent: 33 93% 54%;
+    --accent-foreground: 203 14% 8%;
+    --destructive: 1 61% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 206 11% 19%;
+    --input: 206 11% 19%;
+    --ring: 33 93% 54%;
+    --radius: 0.25rem;
+  }
+
+  .light {
     --paper: #edeff0;
     --paper-raised: #f7f8f8;
     --ink: #14181b;
     --ink-muted: #596065;
     --ink-faint: #8b9298;
     --rule: #d3d8da;
-    /* Bitcoin orange: the bright value for marks, the deep one where text
-       needs to stay legible on paper */
     --signal: #f7931a;
     --signal-ink: #8a5200;
     --terminal-bg: #16191c;
     --terminal-rule: #2b3034;
+    --terminal-text: #c9d1d6;
+    --terminal-dim: #6c757c;
+    --terminal-output: #7fb3a3;
 
-    /* shadcn compatibility (kept so stray primitives inherit the palette) */
     --background: 197 7% 93%;
     --foreground: 206 15% 9%;
     --card: 200 6% 97%;
@@ -31,14 +68,9 @@
     --secondary-foreground: 206 15% 9%;
     --muted: 197 7% 88%;
     --muted-foreground: 200 6% 37%;
-    --accent: 33 93% 54%;
-    --accent-foreground: 206 15% 9%;
-    --destructive: 1 61% 48%;
-    --destructive-foreground: 0 0% 100%;
     --border: 197 8% 84%;
     --input: 197 8% 84%;
     --ring: 206 15% 9%;
-    --radius: 0.25rem;
   }
 
   * {
@@ -53,6 +85,7 @@
 
   body {
     background-color: var(--paper);
+    transition: background-color 220ms ease, color 220ms ease;
     color: var(--ink);
     font-family: Archivo, system-ui, -apple-system, sans-serif;
     font-synthesis-weight: none;
@@ -160,9 +193,10 @@
 /* Terminal */
 .terminal {
   background: var(--terminal-bg);
+  border: 1px solid var(--terminal-rule);
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(20, 24, 27, 0.14), 0 18px 40px -22px rgba(20, 24, 27, 0.5);
+  box-shadow: 0 18px 40px -26px rgba(0, 0, 0, 0.55);
 }
 
 .terminal-bar {
@@ -177,7 +211,7 @@
   width: 0.56rem;
   height: 0.56rem;
   border-radius: 50%;
-  background: #353b40;
+  background: var(--terminal-rule);
 }
 
 .terminal-dot:first-child {
@@ -188,7 +222,7 @@
   margin-left: 0.5rem;
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   font-size: 0.72rem;
-  color: #6c757c;
+  color: var(--terminal-dim);
 }
 
 .terminal-body {
@@ -197,7 +231,7 @@
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   font-size: 0.82rem;
   line-height: 1.85;
-  color: #c9d1d6;
+  color: var(--terminal-text);
   white-space: pre-wrap;
   word-break: break-word;
   min-height: 17.5rem;
@@ -208,11 +242,11 @@
 }
 
 .t-output {
-  color: #7fb3a3;
+  color: var(--terminal-output);
 }
 
 .t-note {
-  color: #6c757c;
+  color: var(--terminal-dim);
 }
 
 .t-cursor {
@@ -313,4 +347,20 @@
   translate: 0 -0.15em;
   border-radius: 50%;
   background: var(--signal);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  color: var(--ink-muted);
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  background-color: var(--paper-raised);
 }

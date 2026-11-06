@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { name: "Work", href: "#work" },
@@ -30,6 +31,7 @@ const Navbar = () => {
           Safwan Onakkal
         </a>
 
+        <div className="flex items-center gap-4 sm:gap-6">
         <ul className="flex items-baseline gap-4 sm:gap-7">
           {navLinks.map((link) => (
             <li key={link.name}>
@@ -45,6 +47,8 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        <ThemeToggle />
+        </div>
       </nav>
     </header>
   );

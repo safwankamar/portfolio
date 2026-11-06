@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 import { skillIcons } from "./skill-icons";
 import { prefersReducedMotion } from "@/hooks/use-in-view";
 
@@ -15,6 +16,8 @@ const lattice = skillIcons.map((icon, i) => {
 });
 
 const SkillGlobe = () => {
+  const { resolvedTheme } = useTheme();
+  const onLight = resolvedTheme === "light";
   const hostRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Array<HTMLDivElement | null>>([]);
   const rotation = useRef({ yaw: 0.5, pitch: -0.22 });
@@ -140,7 +143,7 @@ const SkillGlobe = () => {
             ref={(el) => (nodeRefs.current[i] = el)}
             className="globe-node"
           >
-            <svg viewBox="0 0 24 24" width="24" height="24" fill={icon.hex} focusable="false">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill={onLight ? icon.onLight : icon.onDark} focusable="false">
               <path d={icon.path} />
             </svg>
             {!icon.wordmark && <span className="globe-label">{icon.label}</span>}
