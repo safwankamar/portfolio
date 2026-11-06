@@ -52,6 +52,13 @@ const projects: Project[] = [
     stack: ["Python", "LND", "Nostr", "NIP-47", "Lightning"],
     repo: "safwankamar/nwc_bridge_polar",
   },
+  {
+    title: "ClaySys AppForms",
+    summary:
+      "A low-code platform where forms, workflows and line-of-business applications are configured rather than written. The designer saves a form's layout, data bindings and business rules as XML/JSON metadata, and a rendering engine turns that metadata into HTML5 at runtime, which is what lets forms built years ago keep working on later versions of the product. Forms bind to SharePoint lists, SQL Server, Oracle and REST services. I worked on the product itself as a product technical associate, in JavaScript, Angular and .NET.",
+    stack: ["Angular", "JavaScript", ".NET", "SQL Server", "SharePoint"],
+    note: "At ClaySys",
+  },
 ];
 
 const Projects = () => {
