@@ -1,3 +1,4 @@
+import Backdrop from "@/components/portfolio/Backdrop";
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
 import Projects from "@/components/portfolio/Projects";
@@ -9,6 +10,7 @@ import Footer from "@/components/portfolio/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <Backdrop />
       <Navbar />
       <main>
         <Hero />

@@ -364,3 +364,94 @@
   color: var(--ink);
   background-color: var(--paper-raised);
 }
+
+/* Backdrop ------------------------------------------------------------- */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.backdrop-guides {
+  position: relative;
+  width: 100%;
+  max-width: 76rem;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .backdrop-guides { padding: 0 2.5rem; }
+}
+
+.guide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--rule) 18%,
+    var(--rule) 82%,
+    transparent
+  );
+  opacity: 0.5;
+  animation: guide-breathe 19s ease-in-out infinite;
+}
+
+/* Aligned to the scope steps the content itself is indented by */
+.guide-1 { left: 1.5rem; }
+.guide-2 { left: calc(1.5rem + clamp(0rem, 4.5vw, 5rem)); animation-delay: -6.3s; }
+.guide-3 { left: calc(1.5rem + clamp(0rem, 9vw, 10rem)); animation-delay: -12.6s; }
+
+@media (min-width: 640px) {
+  .guide-1 { left: 2.5rem; }
+  .guide-2 { left: calc(2.5rem + clamp(0rem, 4.5vw, 5rem)); }
+  .guide-3 { left: calc(2.5rem + clamp(0rem, 9vw, 10rem)); }
+}
+
+@keyframes guide-breathe {
+  0%, 100% { opacity: 0.22; }
+  50% { opacity: 0.75; }
+}
+
+.backdrop-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: min(80rem, 150vw);
+  aspect-ratio: 1;
+  margin-left: -40%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--signal) 9%, transparent),
+    transparent 62%
+  );
+  filter: blur(40px);
+  animation: glow-drift 46s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.light .backdrop-glow {
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--signal) 13%, transparent),
+    transparent 62%
+  );
+}
+
+@keyframes glow-drift {
+  from { transform: translate3d(-12%, -4%, 0) scale(0.92); }
+  to { transform: translate3d(14%, 10%, 0) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide { animation: none; opacity: 0.4; }
+  .backdrop-glow { animation: none; }
+}
