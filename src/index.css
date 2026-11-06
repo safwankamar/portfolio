@@ -284,6 +284,10 @@
 .globe {
   position: relative;
   container-type: inline-size;
+  /* Keep the marks' stacking inside the globe so they cannot rise above
+     the sticky header as the section scrolls past it. */
+  isolation: isolate;
+  z-index: 0;
   width: min(100%, 26rem);
   aspect-ratio: 1;
   cursor: grab;

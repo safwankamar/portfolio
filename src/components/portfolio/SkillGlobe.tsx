@@ -58,7 +58,7 @@ const SkillGlobe = () => {
 
         node.style.transform = `translate3d(${x1 * radius}px, ${y2 * radius}px, 0) translate(-50%, -50%) scale(${scale})`;
         node.style.opacity = String(0.3 + depth * 0.7);
-        node.style.zIndex = String(Math.round(depth * 100));
+        node.style.zIndex = String(Math.round(depth * 20));
 
         if (depth > frontDepth) {
           frontDepth = depth;
