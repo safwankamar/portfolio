@@ -11,17 +11,12 @@ const Contact = () => {
   return (
     <section id="contact" className="mx-auto max-w-[76rem] px-6 py-20 sm:px-10 sm:py-28">
       <Reveal>
-        <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">
-          <span className="status-dot" aria-hidden="true" />
-          Open to new work
-        </h2>
+        <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">Get in touch</h2>
       </Reveal>
 
       <div className="scope-2 mt-12 sm:mt-16">
         <p className="measure text-[1.05rem] leading-[1.75] sm:text-[1.15rem]" style={{ color: "var(--ink-muted)" }}>
-          I&rsquo;m taking on freelance projects and talking to teams hiring
-          full time. Email is the fastest way to reach me &mdash; I reply within
-          a day.
+          Email is the fastest way to reach me. I usually reply within a day.
         </p>
 
         <dl className="mt-12 sm:mt-14">

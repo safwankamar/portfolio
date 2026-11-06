@@ -273,17 +273,6 @@
   .row::before { transform: scaleX(1); }
   .t-cursor { animation: none; }
 }
-
-.status-dot {
-  display: inline-block;
-  width: 0.42em;
-  height: 0.42em;
-  margin-right: 0.38em;
-  translate: 0 -0.22em;
-  border-radius: 50%;
-  background: var(--signal);
-}
-
 /* Skill globe */
 .globe-figure {
   margin: 0;
