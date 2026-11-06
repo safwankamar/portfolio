@@ -1,101 +1,52 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import ThemeToggle from "@/components/ThemeToggle";
+import { useEffect, useState } from "react";
 
 const navLinks = [
+  { name: "Work", href: "#work" },
+  { name: "Toolkit", href: "#toolkit" },
   { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "glass-effect shadow-material border-b border-border"
-          : "bg-transparent"
-      }`}
+    <header
+      className="sticky top-0 z-50 transition-colors duration-300"
+      style={{
+        backgroundColor: "var(--paper)",
+        borderBottom: `1px solid ${isScrolled ? "var(--rule)" : "transparent"}`,
+      }}
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <a
-            href="#"
-            className="text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-colors"
-          >
-            SO<span className="text-primary">.</span>
-          </a>
+      <nav className="mx-auto flex max-w-[76rem] items-baseline justify-between gap-6 px-6 py-5 sm:px-10">
+        <a href="#top" className="whitespace-nowrap text-[0.9rem] tracking-tight sm:text-[0.95rem]" style={{ fontWeight: 600 }}>
+          Safwan Onakkal
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
+        <ul className="flex items-baseline gap-4 sm:gap-7">
+          {navLinks.map((link) => (
+            <li key={link.name}>
               <a
-                key={link.name}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-all"
+                className="text-[0.8rem] transition-colors sm:text-[0.9rem]"
+                style={{ color: "var(--ink-muted)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink-muted)")}
               >
                 {link.name}
               </a>
-            ))}
-          </div>
-
-          <div className="hidden md:flex items-center gap-3">
-            <ThemeToggle />
-            <Button asChild size="sm" className="shadow-material-sm hover:shadow-material">
-              <a href="#contact">Let's Talk</a>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
-            <button
-              className="p-2 text-foreground hover:bg-secondary rounded-lg transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
-            <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-all"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <Button asChild className="mt-4 w-full shadow-material">
-                <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Let's Talk
-                </a>
-              </Button>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 };
 
