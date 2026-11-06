@@ -24,6 +24,13 @@ const projects: Project[] = [
     note: "Private source",
   },
   {
+    title: "Multimodal chat assistant",
+    summary:
+      "A chat application that accepts images alongside text, built as an Angular front end over a FastAPI service. Conversations persist and are summarised as they grow, each new summary folded into the previous one so a long thread stays inside the context window instead of being cut off at the front. Every exchange records its token count and the model that produced it, so the cost of a conversation is visible rather than guessed at.",
+    stack: ["Angular", "TypeScript", "FastAPI", "Python", "OpenAI"],
+    note: "Private source",
+  },
+  {
     title: "AI Resume Tailor",
     summary:
       "A service that reads a resume out of a PDF or Word file, compares it against a job description, and rewrites it for relevance and ATS parsing. Built as a FastAPI backend so it can sit behind any front end.",
