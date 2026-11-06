@@ -1,9 +1,9 @@
 import Terminal from "./Terminal";
 
 const lines = [
-  { text: "I build web applications", scope: "scope-1" },
-  { text: "and the machine learning", scope: "scope-2" },
-  { text: "systems behind them.", scope: "scope-3" },
+  { text: "I build AI tools", scope: "scope-1" },
+  { text: "and the Python services", scope: "scope-2" },
+  { text: "they run on.", scope: "scope-3" },
 ];
 
 const Hero = () => {
