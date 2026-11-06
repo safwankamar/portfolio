@@ -24,9 +24,10 @@ const Hero = () => {
       <div className="scope-2 mt-14 grid gap-12 sm:mt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-start lg:gap-16">
         <div className="rise" style={{ animationDelay: "380ms" }}>
           <p className="measure text-[1.05rem] leading-[1.7] sm:text-[1.15rem]" style={{ color: "var(--ink-muted)" }}>
-            I&rsquo;m Safwan Onakkal, a software developer in Dubai. Two years of
-            production work in Python, .NET, and Angular, with most of my recent
-            time spent on applied machine learning.
+            I&rsquo;m Safwan Onakkal, a software developer in Dubai. I&rsquo;ve been
+            shipping production software since 2023 in Python, .NET, and
+            Angular, with most of my recent time spent on applied machine
+            learning.
           </p>
 
           <p className="mt-8 text-[1.05rem] sm:text-[1.15rem]">
