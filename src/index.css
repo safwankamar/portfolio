@@ -294,7 +294,7 @@
 
 .globe {
   position: relative;
-  width: min(100%, 32rem);
+  width: min(100%, 26rem);
   aspect-ratio: 1;
   cursor: grab;
   touch-action: pan-y;
