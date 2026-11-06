@@ -4,7 +4,7 @@ type Project = {
   title: string;
   summary: string;
   stack: string[];
-  repo: string;
+  repo?: string;
   note?: string;
 };
 
@@ -17,12 +17,26 @@ const projects: Project[] = [
     repo: "safwankamar/cortex",
   },
   {
+    title: "Tour booking assistant",
+    summary:
+      "A retrieval-augmented assistant for a Dubai tour operator that answers questions on packages, pricing and availability, then walks the customer through the booking itself. A supervisor agent routes each message to a water-activities, desert-activities or general specialist, each reading from its own vector store built from the operator's PDFs. Bookings run as a validated state machine rather than free-form chat, so a half-finished conversation cannot produce a half-finished booking.",
+    stack: ["Python", "LangChain", "ChromaDB", "OpenAI", "Ollama"],
+    note: "Private source",
+  },
+  {
     title: "AI Resume Tailor",
     summary:
       "A service that reads a resume out of a PDF or Word file, compares it against a job description, and rewrites it for relevance and ATS parsing. Built as a FastAPI backend so it can sit behind any front end.",
     stack: ["Python", "FastAPI", "OpenAI API", "PyPDF2"],
     repo: "safwankamar/ai-resume-tailor",
     note: "In progress",
+  },
+  {
+    title: "Fine-tuning and retrieval experiments",
+    summary:
+      "A run of training work done from the ground up rather than through an API: word2vec and LSTM language models, attention heads visualised to see what they actually attend to, and GPT-2 fine-tuned on a medical question-answer corpus both fully and with LoRA to compare cost against quality. The retrieval half ended in an agent that answers Angular questions from the documentation while carrying conversation memory and tracking its own token spend.",
+    stack: ["PyTorch", "Transformers", "LoRA", "ChromaDB", "LangChain"],
+    note: "Private source",
   },
   {
     title: "NWC Polar Bridge",
@@ -66,16 +80,18 @@ const Projects = () => {
                 {project.summary}
               </p>
 
-              <p className="mt-4 text-[0.92rem]">
-                <a
-                  className="link"
-                  href={`https://github.com/${project.repo}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  github.com/{project.repo}
-                </a>
-              </p>
+              {project.repo && (
+                <p className="mt-4 text-[0.92rem]">
+                  <a
+                    className="link"
+                    href={`https://github.com/${project.repo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    github.com/{project.repo}
+                  </a>
+                </p>
+              )}
 
               <ul
                 className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[0.88rem]"
