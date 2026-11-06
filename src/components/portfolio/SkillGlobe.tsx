@@ -37,6 +37,8 @@ const SkillGlobe = () => {
       const size = host.clientWidth;
       const radius = size / 2 - size * 0.14;
       const { yaw, pitch } = rotation.current;
+      let frontIndex = 0;
+      let frontDepth = -Infinity;
       const cosYaw = Math.cos(yaw);
       const sinYaw = Math.sin(yaw);
       const cosPitch = Math.cos(pitch);
@@ -58,10 +60,16 @@ const SkillGlobe = () => {
         node.style.opacity = String(0.3 + depth * 0.7);
         node.style.zIndex = String(Math.round(depth * 100));
 
-        const caption = node.lastElementChild as HTMLElement | null;
-        if (caption) {
-          caption.style.opacity = String(Math.max(0, Math.min(1, (depth - 0.62) / 0.22)));
+        if (depth > frontDepth) {
+          frontDepth = depth;
+          frontIndex = i;
         }
+      });
+
+      // Only the mark nearest the viewer is captioned, so labels never collide.
+      lattice.forEach((_, i) => {
+        const caption = nodeRefs.current[i]?.lastElementChild as HTMLElement | null;
+        if (caption) caption.style.opacity = i === frontIndex ? "1" : "0";
       });
     };
 
