@@ -14,28 +14,28 @@ const Contact = () => {
         <h2 className="display text-[clamp(1.7rem,4.2vw,3rem)]">Get in touch</h2>
       </Reveal>
 
-      <div className="scope-2 mt-12 sm:mt-16">
+      <div className="scope-2 mt-10 sm:mt-14">
         <p className="measure text-[1.05rem] leading-[1.75] sm:text-[1.15rem]" style={{ color: "var(--ink-muted)" }}>
           Email is the fastest way to reach me. I usually reply within a day.
         </p>
 
-        <dl className="mt-12 sm:mt-14">
+        <dl className="mt-10 grid max-w-[38rem] gap-x-10 sm:mt-12 sm:grid-cols-2">
           {channels.map((channel) => (
             <Reveal key={channel.label} rule>
-              <div className="grid gap-1 py-5 sm:grid-cols-[minmax(0,10rem)_1fr] sm:gap-10">
-              <dt className="text-[0.88rem]" style={{ color: "var(--ink-faint)" }}>
-                {channel.label}
-              </dt>
-              <dd className="text-[1.05rem] sm:text-[1.2rem]">
-                <a
-                  className="link"
-                  href={channel.href}
-                  {...(channel.href.startsWith("http")
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                >
-                  {channel.value}
-                </a>
+              <div className="py-5">
+                <dt className="text-[0.82rem]" style={{ color: "var(--ink-faint)" }}>
+                  {channel.label}
+                </dt>
+                <dd className="mt-1 text-[1.05rem] sm:text-[1.1rem]">
+                  <a
+                    className="link"
+                    href={channel.href}
+                    {...(channel.href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {channel.value}
+                  </a>
                 </dd>
               </div>
             </Reveal>
