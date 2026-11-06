@@ -5,14 +5,16 @@ type Line = { kind: "input" | "output" | "note"; text: string };
 
 const script: Line[] = [
   { kind: "input", text: "python3" },
-  { kind: "note", text: "Python 3.12.2" },
+  { kind: "note", text: "Python 3.13.1" },
   { kind: "input", text: "import safwan" },
   { kind: "input", text: "safwan.stack" },
-  { kind: "output", text: "['Python', 'TypeScript', 'C#/.NET', 'SQL']" },
+  { kind: "output", text: "['Python', 'Angular', 'TypeScript', 'C#/.NET', 'SQL']" },
   { kind: "input", text: "safwan.focus" },
-  { kind: "output", text: "'applied machine learning'" },
+  { kind: "output", text: "['RAG', 'agents', 'fine-tuning']" },
   { kind: "input", text: "safwan.also" },
-  { kind: "output", text: "['bitcoin', 'lightning', 'taproot']" },
+  { kind: "output", text: "['bitcoin', 'lightning', 'nostr']" },
+  { kind: "input", text: "safwan.since" },
+  { kind: "output", text: "2023" },
   { kind: "input", text: "safwan.available" },
   { kind: "output", text: "True" },
 ];
@@ -98,7 +100,7 @@ const Terminal = () => {
       ref={ref}
       className="terminal"
       role="img"
-      aria-label="A Python session listing Safwan's stack: Python, TypeScript, C# and .NET, SQL; focus on applied machine learning; also bitcoin, lightning and taproot; available for work."
+      aria-label="A Python session listing Safwan's stack: Python, Angular, TypeScript, C# and .NET, SQL; focus on RAG, agents and fine-tuning; also bitcoin, lightning and nostr; working since 2023; available for work."
     >
       <div className="terminal-bar" aria-hidden="true">
         <span className="terminal-dot" />
