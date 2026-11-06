@@ -15,8 +15,8 @@ const script: Line[] = [
   { kind: "output", text: "['bitcoin', 'lightning', 'nostr']" },
   { kind: "input", text: "safwan.since" },
   { kind: "output", text: "2023" },
-  { kind: "input", text: "safwan.available" },
-  { kind: "output", text: "True" },
+  { kind: "input", text: "safwan.location" },
+  { kind: "output", text: "'Dubai, UAE'" },
 ];
 
 const TYPE_MS = 34;
@@ -100,7 +100,7 @@ const Terminal = () => {
       ref={ref}
       className="terminal"
       role="img"
-      aria-label="A Python session listing Safwan's stack: Python, Angular, TypeScript, C# and .NET, SQL; focus on RAG, agents and fine-tuning; also bitcoin, lightning and nostr; working since 2023; available for work."
+      aria-label="A Python session listing Safwan's stack: Python, Angular, TypeScript, C# and .NET, SQL; focus on RAG, agents and fine-tuning; also bitcoin, lightning and nostr; working since 2023; based in Dubai."
     >
       <div className="terminal-bar" aria-hidden="true">
         <span className="terminal-dot" />
